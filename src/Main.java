@@ -1,9 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class Main {
 
     public static void compareMultiDimIntegerArrayLists(ArrayList<ArrayList<Integer>> multiDimArrayList01,
