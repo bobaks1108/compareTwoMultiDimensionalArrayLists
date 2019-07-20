@@ -38,24 +38,26 @@ public class Main {
             boolean anElementNotFound = false;
 
             // Loop through the top level elements (arrayLists) in multiDimArrayList01
-            while (!anElementNotFound && loopFirstArrayListCount < multiDimArrayList01.size()) {
+            while (loopFirstArrayListCount < multiDimArrayList01.size()) {
                 ArrayList<Integer> temp = multiDimArrayList01.get(loopFirstArrayListCount);
                 System.out.println("");
-                System.out.println("Array 1 element " + temp);
+                System.out.println("Array 1 element " + loopFirstArrayListCount + ": " + temp);
                 loopSecondArrayListCount = 0;
 
                 // Loop through the elements of the second array (multiDimArrayList02)
                 for (ArrayList<Integer> temp1 : multiDimArrayList02) {
-                    System.out.println("Array 2 element " + temp1);
+                    System.out.println("  Array 2 element " + loopSecondArrayListCount + ": " + temp1);
 
                     // If the arrayLists Match AND this position has not already been matched.
                     // Then update the matches array (replace the -1 with the top level loop number)
                     // and record the position in the second int array (matchesPos)
                     if (temp.equals(temp1) && !contains(matchesPos, loopSecondArrayListCount)) {
-                        System.out.println(" ** Match at " + loopSecondArrayListCount + "**");
+                        System.out.println("  ** Match at " + loopSecondArrayListCount + " **");
                         matches[loopFirstArrayListCount] = loopFirstArrayListCount;
                         matchesPos[loopFirstArrayListCount] = loopSecondArrayListCount;
                         break;
+                    } else if (temp.equals(temp1) && contains(matchesPos, loopSecondArrayListCount)) {
+                        System.out.println("  ** Match at " + loopSecondArrayListCount + " but already matched **");
                     }
                     loopSecondArrayListCount++;
                     // If we have looped through all the elements in the second array
@@ -67,9 +69,10 @@ public class Main {
                 loopFirstArrayListCount++;
             }
 
+            System.out.println("");
             System.out.println("The elements in arrayList 1 that match one element in arrayList 2 (-1 means no match):");
             System.out.println(Arrays.toString(matches));
-
+            System.out.println("");
             System.out.println("The positions in arrayList 2 of the elements matched:");
             System.out.println(Arrays.toString(matchesPos));
 
@@ -154,12 +157,18 @@ public class Main {
         multiDimArrayListG.add(arryListTest01);
         multiDimArrayListG.add(arryListTest03);
         multiDimArrayListG.add(arryListTest02);
+        multiDimArrayListG.add(arryListTest04);
+        multiDimArrayListG.add(arryListTest05);
+        multiDimArrayListG.add(arryListTest06);
         multiDimArrayListG.add(arryListTest01);
 
         multiDimArrayListH.add(arryListTest01);
         multiDimArrayListH.add(arryListTest01);
         multiDimArrayListH.add(arryListTest02);
         multiDimArrayListH.add(arryListTest02);
+        multiDimArrayListH.add(arryListTest05);
+        multiDimArrayListH.add(arryListTest06);
+        multiDimArrayListH.add(arryListTest01);
 
         compareMultiDimIntegerArrayLists(multiDimArrayListA, multiDimArrayListB); // elements match -> Output: Matches
         compareMultiDimIntegerArrayLists(multiDimArrayListA, multiDimArrayListC); // elements do not match -> Output: No Match
